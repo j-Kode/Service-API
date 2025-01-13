@@ -102,6 +102,26 @@
 			"response": []
 		},
 		{
+			"name": "Get Service Version",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/services/{{serviceId}}/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"services",
+						"{{serviceId}}",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Update Service",
 			"request": {
 				"method": "PATCH",
