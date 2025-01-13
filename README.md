@@ -19,7 +19,7 @@ Before you begin, ensure you have the following installed:
 npm install
 ```
 
-2. Create a `.env` file in the root directory (use `.env.example` as a template):
+2. Create a `.env` file in the root directory (In this case copy `.env.example` and rename it to `.env`, all the keys are for testing and environments will be deleted later):
 
 ```env
 DATABASE_HOST=localhost
@@ -75,6 +75,32 @@ npm run test
   - Record recovery
   - Audit trailing
   - Maintaining referential integrity
+
+[Previous sections remain the same...]
+
+## 🤔 Assumptions
+
+### Version Entity
+
+- Assuming theres no other fields in table, I just have version number in there and description.
+
+### Environment Variables
+
+- Included `.env.example` with actual configuration values for ease of setup
+- In a production environment, these values would never be committed to the repository
+- Sensitive data would be managed through a secure secrets management system
+
+### API Testing
+
+- Included a Postman collection (`postman_collection.json`) in the repository
+- Collection contains all available endpoints with:
+  - Pre-configured requests
+  - Example payloads
+  - Environment variables
+  - Tests for response validation
+- Can be imported directly into Postman for immediate testing
+
+Can be imported directly into Postman for immediate testing
 
 ## ⚙️ Configuration
 

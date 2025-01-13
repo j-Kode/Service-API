@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "a2750349-d15e-42a6-943d-8d126e53fd18",
+		"name": "Konnect Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1002885"
+	},
+	"item": [
+		{
+			"name": "Get All Services",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/services/?page=1&limit=20&searchFields=[]",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"services",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "20"
+						},
+						{
+							"key": "searchFields",
+							"value": "[]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Service",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(201);",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"serviceId\",jsonData.id);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"this is test\",\n    \"description\": \"this is a really cool test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/services",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"services"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Service",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/services/{{serviceId}}",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"services",
+						"{{serviceId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Service",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"TESTINGGGGGG\",\n    \"description\": \"UPDATED\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/services/{{serviceId}}",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"services",
+						"{{serviceId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "grant_type",
+				"value": "password_credentials",
+				"type": "string"
+			},
+			{
+				"key": "scope",
+				"value": "profile",
+				"type": "string"
+			},
+			{
+				"key": "useBrowser",
+				"value": false,
+				"type": "boolean"
+			},
+			{
+				"key": "tokenRequestParams",
+				"value": [
+					{
+						"key": "audience",
+						"value": "https://konnect-service-api.demo.com",
+						"enabled": true,
+						"send_as": "request_body"
+					}
+				],
+				"type": "any"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "{{auth0_token_url}}",
+				"type": "string"
+			},
+			{
+				"key": "redirect_uri",
+				"value": "localhost:3000",
+				"type": "string"
+			},
+			{
+				"key": "authUrl",
+				"value": "{{auth0_auth_url}}",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "Auth0 Access Token",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "{{auth0_password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{auth0_username}}",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "{{auth0_secret}}",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "{{auth0_clientid}}",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "auth0_clientid",
+			"value": "J9TfTEVcZbmIr29riAbwOKBf45xLGSRZ",
+			"type": "string"
+		},
+		{
+			"key": "auth0_secret",
+			"value": "AlB39yr8ShxhtxJq16c8YBWrOnFO0tfCD6JkoNrKjn0KtEQ0A_HsiSBsZvyKqNog",
+			"type": "string"
+		},
+		{
+			"key": "auth0_username",
+			"value": "user@konnect.com",
+			"type": "string"
+		},
+		{
+			"key": "auth0_password",
+			"value": "K0nnect!",
+			"type": "string"
+		},
+		{
+			"key": "auth0_auth_url",
+			"value": "https://dev-qlqxv6f2d8u6xieg.us.auth0.com/authorize",
+			"type": "string"
+		},
+		{
+			"key": "auth0_token_url",
+			"value": "https://dev-qlqxv6f2d8u6xieg.us.auth0.com/oauth/token",
+			"type": "string"
+		}
+	]
+}
