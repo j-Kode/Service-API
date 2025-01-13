@@ -1,8 +1,6 @@
-# NestJS API with TypeORM and PostgreSQL
+# Konnect Services API
 
-A RESTful API built with NestJS, TypeORM, and PostgreSQL, implementing user management with pagination and search functionality.
-
-## 📋 Prerequisites
+## Prerequisites
 
 Before you begin, ensure you have the following installed:
 
@@ -11,7 +9,7 @@ Before you begin, ensure you have the following installed:
 - [Node.js](https://nodejs.org/) (v16 or later)
 - [npm](https://www.npmjs.com/)
 
-## 🛠️ Installation & Setup
+## Installation & Setup
 
 1. Install dependencies:
 
@@ -23,7 +21,7 @@ npm install
 
 ````
 
-## 🏃‍♂️ Running the Application
+## Running the Application
 
 ### Using Docker (Recommended)
 
@@ -43,7 +41,7 @@ Run unit tests:
 npm run test
 ```
 
-## 🎯 Design Considerations
+## Design Considerations
 
 #### Service Version Entity
 
@@ -70,7 +68,7 @@ npm run test
   - Audit trailing
   - Maintaining referential integrity
 
-## 🤔 Assumptions
+## Assumptions
 
 ### Version Entity
 
@@ -94,11 +92,6 @@ npm run test
 
 Can be imported directly into Postman for immediate testing
 
-## ⚙️ Configuration
+## Configuration
 
 The application can be configured using environment variables. See `.env.example` for available options.
-
-## 📚 API Documentation
-
-Once the application is running, you can access the Swagger documentation at:
-`http://localhost:3000/api-docs`
