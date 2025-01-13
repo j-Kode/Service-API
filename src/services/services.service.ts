@@ -9,7 +9,7 @@ import { Service } from './entities/service.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { IdParam } from './params/id-param';
 import { PaginatedDto } from './dto/paginated.dto';
-import { Like, Repository } from 'typeorm';
+import { FindOptionsWhere, Like, Repository } from 'typeorm';
 
 @Injectable()
 export class ServicesService {
@@ -18,6 +18,10 @@ export class ServicesService {
   ) {}
   async create(createServiceDto: CreateServiceDto) {
     try {
+      //Adding initial version.
+      createServiceDto.versions = [
+        { versionNo: 1, description: 'Initial auto created version' },
+      ];
       return await this.serviceRepo.save(createServiceDto);
     } catch (error) {
       //Log to data dog here
@@ -45,17 +49,19 @@ export class ServicesService {
       }
 
       //Check if pagination information is valid
-      if (paginatedDto.limit * (paginatedDto.page - 1) >= totalRecords) {
+      if (paginatedDto.limit * (paginatedDto.page - 1) > totalRecords) {
         throw new BadRequestException(
           `Page ${paginatedDto.page} and limit ${paginatedDto.limit} exceed total available records, Last Page is ${maxPage} with this limit`,
         );
       }
 
-      const whereConditions = searchFields.map((field) => {
-        return {
-          [field]: Like(`%${paginatedDto.search}%`),
-        };
-      });
+      const whereConditions: FindOptionsWhere<Service>[] = searchFields?.map(
+        (field) => {
+          return {
+            [field]: Like(`%${paginatedDto.search}%`),
+          };
+        },
+      );
 
       return await this.serviceRepo.find({
         where: whereConditions,
@@ -76,8 +82,14 @@ export class ServicesService {
 
   async findOne(idParam: IdParam) {
     try {
+      const whereConditions: FindOptionsWhere<Service> = { id: idParam.id };
+      if (idParam.serviceVersion) {
+        whereConditions.versions = {
+          versionNo: idParam.serviceVersion,
+        };
+      }
       return await this.serviceRepo.findOne({
-        where: { id: idParam.id },
+        where: whereConditions,
         relations: {
           versions: true,
         },

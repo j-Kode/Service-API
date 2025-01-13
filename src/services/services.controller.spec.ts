@@ -54,6 +54,12 @@ describe('ServicesController', () => {
       // Add your DTO properties here
       title: 'Test Service',
       description: 'Test Description',
+      versions: [
+        {
+          description: 'Initial auto created version',
+          versionNo: 1,
+        },
+      ],
     };
 
     it('should create a service successfully', async () => {

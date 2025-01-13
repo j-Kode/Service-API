@@ -1,4 +1,5 @@
 import { IsOptional, IsString, Length } from 'class-validator';
+import { ServiceVersion } from '../entities/service-version.entity';
 
 export class CreateServiceDto {
   @IsString()
@@ -11,4 +12,6 @@ export class CreateServiceDto {
   @IsString()
   @IsOptional()
   description: string;
+
+  versions: Partial<ServiceVersion>[];
 }

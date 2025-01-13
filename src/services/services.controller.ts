@@ -53,10 +53,11 @@ export class ServicesController {
   }
 
   @UseGuards(AuthGuard)
-  @Get(':id')
+  @Get(':id/:serviceVersion?')
   @UsePipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }))
   async findOne(@Param() idParam: IdParam) {
     try {
+      console.log(idParam);
       const service = await this.servicesService.findOne(idParam);
       if (!service) {
         throw new NotFoundException('Service not found');

@@ -20,7 +20,9 @@ export class Service {
   @Column('text')
   description: string;
 
-  @OneToMany(() => ServiceVersion, (version) => version.service)
+  @OneToMany(() => ServiceVersion, (version) => version.service, {
+    cascade: ['insert'],
+  })
   @JoinColumn()
   versions: ServiceVersion[];
 

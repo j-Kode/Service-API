@@ -55,6 +55,12 @@ describe('ServicesService', () => {
     const createServiceDto: CreateServiceDto = {
       title: 'Test Service',
       description: 'Test Description',
+      versions: [
+        {
+          description: 'Initial auto created version',
+          versionNo: 1,
+        },
+      ],
     };
 
     it('should successfully create a service', async () => {
