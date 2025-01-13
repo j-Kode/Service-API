@@ -43,7 +43,7 @@ npm run test
 
 #### Testing
 
-Unit tests have been added to the controller and service, just to show test coverage, ideally would also implement integration tests to make sure everything is functioning as it should be.
+- Unit tests have been added to the controller and service, just to show test coverage, ideally would also implement integration tests to make sure everything is functioning as it should be.
 
 #### Service Version Entity
 
