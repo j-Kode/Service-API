@@ -26,7 +26,7 @@ describe('ServicesService', () => {
     metadata: {
       columns: [
         { propertyName: 'id' },
-        { propertyName: 'name' },
+        { propertyName: 'title' },
         { propertyName: 'description' },
       ],
     },
@@ -88,13 +88,13 @@ describe('ServicesService', () => {
       page: 1,
       limit: 10,
       search: 'test',
-      searchFields: ['name'],
+      searchFields: ['title'],
     };
 
     it('should successfully retrieve services with pagination and search', async () => {
       const mockServices = [
-        { id: '1', name: 'Test Service 1' },
-        { id: '2', name: 'Test Service 2' },
+        { id: '1', title: 'Test Service 1' },
+        { id: '2', title: 'Test Service 2' },
       ];
       mockRepository.count.mockResolvedValue(2);
       mockRepository.find.mockResolvedValue(mockServices);
@@ -142,7 +142,7 @@ describe('ServicesService', () => {
     const idParam = { id: '1' };
 
     it('should successfully find a service', async () => {
-      const mockService = { id: '1', name: 'Test Service' };
+      const mockService = { id: '1', title: 'Test Service' };
       mockRepository.findOne.mockResolvedValue(mockService);
 
       const result = await service.findOne(idParam);

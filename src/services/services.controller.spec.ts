@@ -87,8 +87,8 @@ describe('ServicesController', () => {
     };
 
     const mockServices = [
-      { id: '1', name: 'Service 1' },
-      { id: '2', name: 'Service 2' },
+      { id: '1', title: 'Service 1' },
+      { id: '2', title: 'Service 2' },
     ];
 
     it('should return paginated services', async () => {
@@ -122,7 +122,7 @@ describe('ServicesController', () => {
     const idParam = { id: '1' };
 
     it('should return a service when it exists', async () => {
-      const mockService = { id: '1', name: 'Test Service' };
+      const mockService = { id: '1', title: 'Test Service' };
       mockServicesService.findOne.mockResolvedValue(mockService);
 
       const result = await controller.findOne(idParam);

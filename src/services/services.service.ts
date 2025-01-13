@@ -38,7 +38,7 @@ export class ServicesService {
       const columnNames = metaData.columns.map((x) => x.propertyName);
       const searchFields = paginatedDto.searchFields;
       const sortFields = paginatedDto.sortBy;
-
+      console.log(searchFields);
       // Checking if search fields are valid
       if (
         searchFields?.length &&
@@ -51,7 +51,7 @@ export class ServicesService {
 
       // Checking Sort by fields as well
       if (
-        searchFields?.length &&
+        sortFields?.length &&
         !sortFields.every((field) => columnNames.includes(field))
       ) {
         throw new BadRequestException(
@@ -75,7 +75,7 @@ export class ServicesService {
       );
 
       //converting array with order to find options
-      const order: FindOptionsOrder<Service> = sortFields.reduce(
+      const order: FindOptionsOrder<Service> = sortFields?.reduce(
         (a, v) => ({ ...a, [v]: paginatedDto.order }),
         {},
       );
