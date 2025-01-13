@@ -94,7 +94,3 @@ npm run test
 - Can be imported directly into Postman for immediate testing
 
 Can be imported directly into Postman for immediate testing
-
-## Configuration
-
-The application can be configured using environment variables. See `.env.example` for available options.
