@@ -74,6 +74,7 @@ export class ServicesService {
         },
       );
 
+      //converting array with order to find options
       const order: FindOptionsOrder<Service> = sortFields.reduce(
         (a, v) => ({ ...a, [v]: paginatedDto.order }),
         {},
