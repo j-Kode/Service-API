@@ -29,7 +29,7 @@ Start the application and database with Docker Compose:
 
 ```bash
 docker-compose up
-````
+```
 
 The API will be available at: `http://localhost:3000`
 
@@ -95,3 +95,4 @@ Can be imported directly into Postman for immediate testing
 ## Configuration
 
 The application can be configured using environment variables. See `.env.example` for available options.
+````
