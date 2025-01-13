@@ -15,7 +15,7 @@ import {
 import { ServicesService } from './services.service';
 import { CreateServiceDto } from './dto/create-service.dto';
 import { UpdateServiceDto } from './dto/update-service.dto';
-import { AuthGuard } from 'src/auth/auth.guard';
+import { AuthGuard } from '../auth/auth.guard';
 import { IdParam } from './params/id-param';
 import { PaginatedDto } from './dto/paginated.dto';
 
