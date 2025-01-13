@@ -36,8 +36,10 @@ export class PaginatedDto {
   search?: string;
 
   @IsOptional()
-  @IsString()
-  sortBy?: string;
+  @IsString({ each: true })
+  @Type(() => String)
+  @Transform((params) => params.value.split(','))
+  sortBy?: string[];
 
   @IsOptional()
   @IsEnum(['asc', 'desc'])

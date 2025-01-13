@@ -9,7 +9,7 @@ import { Service } from './entities/service.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { IdParam } from './params/id-param';
 import { PaginatedDto } from './dto/paginated.dto';
-import { FindOptionsWhere, Like, Repository } from 'typeorm';
+import { FindOptionsOrder, FindOptionsWhere, Like, Repository } from 'typeorm';
 
 @Injectable()
 export class ServicesService {
@@ -37,6 +37,7 @@ export class ServicesService {
       const metaData = this.serviceRepo.metadata;
       const columnNames = metaData.columns.map((x) => x.propertyName);
       const searchFields = paginatedDto.searchFields;
+      const sortFields = paginatedDto.sortBy;
 
       // Checking if search fields are valid
       if (
@@ -45,6 +46,16 @@ export class ServicesService {
       ) {
         throw new BadRequestException(
           `Invalid search field, search fields must only contain ${columnNames}`,
+        );
+      }
+
+      // Checking Sort by fields as well
+      if (
+        searchFields?.length &&
+        !sortFields.every((field) => columnNames.includes(field))
+      ) {
+        throw new BadRequestException(
+          `Invalid sort field, sort by fields must only contain ${columnNames}`,
         );
       }
 
@@ -63,8 +74,13 @@ export class ServicesService {
         },
       );
 
+      const order: FindOptionsOrder<Service> = sortFields.reduce(
+        (a, v) => ({ ...a, [v]: paginatedDto.order }),
+        {},
+      );
       return await this.serviceRepo.find({
         where: whereConditions,
+        order,
         relations: {
           versions: true,
         },
