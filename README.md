@@ -41,6 +41,10 @@ npm run test
 
 ## Design Considerations
 
+#### Testing
+
+Unit tests have been added to the controller and service, just to show test coverage, ideally would also implement integration tests to make sure everything is functioning as it should be.
+
 #### Service Version Entity
 
 - Currently the entity exists in the same place as the Service, this is due to them being closely related and didn't need separate endpoints for this entity.
@@ -70,6 +74,7 @@ npm run test
 
 ### Version Entity
 
+- Im also assuming that creating a new version is not part of the update service endpoint. Currently I have the version creation on the service creation as no version exists initially. I would easily add a add version functionality either under the patch endpoint or on its own.
 - Assuming theres no other fields in table, I just have version number in there and description.
 
 ### Environment Variables
