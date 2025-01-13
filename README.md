@@ -21,13 +21,7 @@ npm install
 
 2. Create a `.env` file in the root directory (In this case copy `.env.example` and rename it to `.env`, all the keys are for testing and environments will be deleted later):
 
-```env
-DATABASE_HOST=localhost
-DATABASE_PORT=5432
-DATABASE_USER=postgres
-DATABASE_PASSWORD=postgres
-DATABASE_NAME=your_database_name
-```
+````
 
 ## 🏃‍♂️ Running the Application
 
@@ -37,7 +31,7 @@ Start the application and database with Docker Compose:
 
 ```bash
 docker-compose up
-```
+````
 
 The API will be available at: `http://localhost:3000`
 
