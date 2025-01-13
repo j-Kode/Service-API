@@ -19,8 +19,6 @@ npm install
 
 2. Create a `.env` file in the root directory (In this case copy `.env.example` and rename it to `.env`, all the keys are for testing and environments will be deleted later):
 
-````
-
 ## Running the Application
 
 ### Using Docker (Recommended)
@@ -95,4 +93,3 @@ Can be imported directly into Postman for immediate testing
 ## Configuration
 
 The application can be configured using environment variables. See `.env.example` for available options.
-````
