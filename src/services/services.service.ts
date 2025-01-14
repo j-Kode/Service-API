@@ -38,7 +38,7 @@ export class ServicesService {
       const columnNames = metaData.columns.map((x) => x.propertyName);
       const searchFields = paginatedDto.searchFields;
       const sortFields = paginatedDto.sortBy;
-      
+
       // Checking if search fields are valid
       if (
         searchFields?.length &&

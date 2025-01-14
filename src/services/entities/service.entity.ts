@@ -21,7 +21,7 @@ export class Service {
   description: string;
 
   @OneToMany(() => ServiceVersion, (version) => version.service, {
-    cascade: ['insert'],
+    onDelete: 'CASCADE',
   })
   @JoinColumn()
   versions: ServiceVersion[];
